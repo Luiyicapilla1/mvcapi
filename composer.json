@@ -1,0 +1,21 @@
+{
+    "name": "cls/mvc2app",
+    "description": "mvc con composer - api rest",
+    "license": "MIT",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Cls\\Mvc2app\\": [
+              "app/librerias/",
+              "app/modelos/",
+              "app/controladores/"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "César López"
+        }
+    ],
+    "require": {}
+}

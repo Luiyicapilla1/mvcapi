@@ -1,0 +1,45 @@
+@baseUrl = http://localhost/dwes/mvccomposer
+
+### LISTAR
+GET {{baseUrl}}/apicar/cars
+Accept: application/json
+
+###
+
+### CREAR (POST)
+POST {{baseUrl}}/apicar/cars
+Content-Type: application/json
+Accept: application/json
+
+{
+  "brand": "Honda",
+  "model": "Civic",
+  "color": "Rojo",
+  "owner": "César"
+}
+
+###
+
+### VER 1
+GET {{baseUrl}}/apicar/car/1
+Accept: application/json
+
+###
+
+### ACTUALIZAR 1 (PUT)
+PUT {{baseUrl}}/apicar/car/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "brand": "Honda",
+  "model": "Civic 2025",
+  "color": "Negro",
+  "owner": "César"
+}
+
+###
+
+### BORRAR 1 (DELETE)
+DELETE {{baseUrl}}/apicar/car/1
+Accept: application/json
