@@ -1,5 +1,5 @@
 <?php
-namespace Cls\Mvc2app;
+namespace lgc\mvc2app;
 
 /**
 Mapear URL desde el navegador
@@ -12,8 +12,8 @@ formato de la url: BASE_DIR/controlador/metodo/parametro
  */
 class Core
 {
-    protected $controladorActual = 'Paginas';
-    protected $metodoActual = 'index';
+    protected $controladorActual = 'apicar';
+    protected $metodoActual = 'cars';
     protected array $parametros = [];
 
     public function __construct()
@@ -41,14 +41,22 @@ class Core
         $this->controladorActual = new $fqcnControlador();
 
         // 3) Método
-        $metodo = $url[1] ?? $this->metodoActual;
-        if (method_exists($this->controladorActual, $metodo)) {
+        $metodo = $url[1] ?? null;
+
+        if ($metodo && method_exists($this->controladorActual, $metodo)) {
             $this->metodoActual = $metodo;
             unset($url[1]);
+        } else {
+            // Si no hay método válido, usar el método por defecto
+            $metodo = $this->metodoActual;
         }
 
         // 4) Parámetros
-        $this->parametros = $url ? array_values($url) : [];
+        unset($url[0]); // quitar controlador SIEMPRE
+        $this->parametros = array_values($url);
+
+        // Convertir números a int
+        $this->parametros = array_map(fn($p) => is_numeric($p) ? (int)$p : $p, $this->parametros);
 
         // 5) Ejecutar
         call_user_func_array([$this->controladorActual, $this->metodoActual], $this->parametros);

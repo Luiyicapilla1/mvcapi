@@ -2,8 +2,8 @@
 
 //Configuración acceso a base de datos
 define('DB_HOST', 'localhost'); //tu servidor de BD.
-define('DB_USUARIO', 'cesar');
-define('DB_PASSWORD', 'cesar');
+define('DB_USUARIO', 'luis');
+define('DB_PASSWORD', 'rootroot');
 define('DB_NOMBRE', 'test'); // Tu base de datos
 
 
@@ -13,7 +13,7 @@ define('RUTA_APP', (dirname(__DIR__)));
 
 //Ruta url Ejemplo: http://localhost/ud5/mvc2app
 //define ('RUTA_URL', '_URL_');
-define ('RUTA_URL', 'http://localhost/dwes/mvcapi');
+define ('RUTA_URL', 'http://localhost/mvcapi');
 
 //define ('NOMBRESITIO', '_NOMBRE_SITIO');
 define ('NOMBRESITIO', 'MVC con Composer y API RESTful');

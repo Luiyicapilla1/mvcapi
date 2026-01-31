@@ -1,11 +1,11 @@
 {
-    "name": "cls/mvc2app",
+    "name": "lgc/mvc2app",
     "description": "mvc con composer - api rest",
     "license": "MIT",
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Cls\\Mvc2app\\": [
+            "lgc\\mvc2app\\": [
               "app/librerias/",
               "app/modelos/",
               "app/controladores/"
@@ -14,8 +14,7 @@
     },
     "authors": [
         {
-            "name": "César López"
+            "name": "Luis García"
         }
-    ],
-    "require": {}
+    ]
 }

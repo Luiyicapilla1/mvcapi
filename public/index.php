@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-use Cls\Mvc2app\Core;
+use lgc\mvc2app\Core;
 
     //cargando el iniciador
     //require_once $_SERVER['DOCUMENT_ROOT'].'/ud5/mvc2app/app/iniciador.php';

@@ -7,15 +7,12 @@ Accept: application/json
 ###
 
 ### CREAR (POST)
-POST {{baseUrl}}/apicar/cars
+POST http://localhost/mvcapi/apiarticulos/articulos
 Content-Type: application/json
 Accept: application/json
 
 {
-  "brand": "Honda",
-  "model": "Civic",
-  "color": "Rojo",
-  "owner": "César"
+  "titulo": "Juan"
 }
 
 ###
@@ -27,19 +24,16 @@ Accept: application/json
 ###
 
 ### ACTUALIZAR 1 (PUT)
-PUT {{baseUrl}}/apicar/car/1
+PUT http://localhost/mvcapi/apiarticulos/articulo/3
 Content-Type: application/json
 Accept: application/json
 
 {
-  "brand": "Honda",
-  "model": "Civic 2025",
-  "color": "Negro",
-  "owner": "César"
+  "titulo": "Pedro"
 }
 
 ###
 
 ### BORRAR 1 (DELETE)
-DELETE {{baseUrl}}/apicar/car/1
+DELETE http://localhost/mvcapi/apiarticulos/articulo/2
 Accept: application/json

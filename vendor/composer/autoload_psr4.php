@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Cls\\Mvc2app\\' => array($baseDir . '/app/librerias', $baseDir . '/app/modelos', $baseDir . '/app/controladores'),
+    'lgc\\mvc2app\\' => array($baseDir . '/app/librerias', $baseDir . '/app/modelos', $baseDir . '/app/controladores'),
 );

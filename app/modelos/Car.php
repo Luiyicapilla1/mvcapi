@@ -1,8 +1,7 @@
 <?php
 
-namespace Cls\Mvc2app;
-
-use Cls\Mvc2app\Db;
+namespace lgc\mvc2app;
+use lgc\mvc2app\Db;
 use PDO;
 
 class Car

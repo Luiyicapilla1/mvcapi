@@ -6,7 +6,7 @@ use lgc\mvc2app\Controlador;
 class ApiCar extends Controlador
 {
     public function __construct(){
-        $this->modelo = $this->modelo('car');
+        $this->modelo = $this->modelo('articulo');
     }
 
     private function jsonResponse($data, int $status = 200): void {
@@ -41,7 +41,7 @@ class ApiCar extends Controlador
     {
         if (!$data) return "Invalid or empty JSON";
 
-        $required = ['brand','model','color','owner'];
+        $required = ['titulo'];
         if ($requireAllFields) {
             foreach ($required as $k) {
                 if (!isset($data[$k]) || trim((string)$data[$k]) === '') {
@@ -52,19 +52,17 @@ class ApiCar extends Controlador
         return null;
     }
 
-    // GET /apicar/cars  |  POST /apicar/cars
-    public function cars(): void
-    {
-        //$this->requireBasicAuth();
 
+    public function articulos(){
+        //$this->requireBasicAuth();
         $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 
-        if ($method === 'GET') {
-            $cars = $this->modelo->getAll();
-            $this->jsonResponse($cars, 200);
+        if ($method == "GET") {
+            $data = $this->modelo->obtenerArticulos();
+            $this->jsonResponse($data, 200);
         }
 
-        if ($method === 'POST') {
+        if ($method == "POST") {
             $data = $this->readJsonBody();
             $err = $this->validateCarPayload($data, true);
             if ($err) {
@@ -77,13 +75,11 @@ class ApiCar extends Controlador
             }
             $this->jsonResponse(["error" => "Error creating car"], 500);
         }
-
         $this->jsonResponse(["error" => "Method Not Allowed"], 405);
     }
+    
 
-    // GET /apicar/car/1 | PUT /apicar/car/1 | DELETE /apicar/car/1
-    public function car(int $id): void
-    {
+    public function articulo($id): void{
         //$this->requireBasicAuth();
 
         $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
@@ -100,7 +96,7 @@ class ApiCar extends Controlador
             $this->jsonResponse($car, 200);
         }
 
-        if ($method === 'PUT') {
+        if ($method == "PUT") {
             $data = $this->readJsonBody();
             $err = $this->validateCarPayload($data, true);
             if ($err) {
@@ -110,30 +106,28 @@ class ApiCar extends Controlador
             // opcional: comprobar existencia antes
             $exists = $this->modelo->getById($id);
             if (!$exists) {
-                $this->jsonResponse(["error" => "Car not found"], 404);
+                $this->jsonResponse(["error" => "Articulo not found"], 404);
             }
 
             $ok = $this->modelo->update($id, $data);
             if ($ok) {
-                $this->jsonResponse(["message" => "Car updated"], 200);
+                $this->jsonResponse(["message" => "Articulo updated"], 200);
             }
-            $this->jsonResponse(["error" => "Error updating car"], 500);
+            $this->jsonResponse(["error" => "Error updating Articulo"], 500);
         }
 
-        if ($method === 'DELETE') {
-            // opcional: comprobar existencia antes
+        if ($method == "DELETE") {
             $exists = $this->modelo->getById($id);
             if (!$exists) {
-                $this->jsonResponse(["error" => "Car not found"], 404);
+                $this->jsonResponse(["error" => "Articulo not found"], 404);
             }
 
             $ok = $this->modelo->delete($id);
             if ($ok) {
-                $this->jsonResponse(["message" => "Car deleted"], 200);
+                $this->jsonResponse(["message" => "Articulo deleted"], 200);
             }
-            $this->jsonResponse(["error" => "Error deleting car"], 500);
+            $this->jsonResponse(["error" => "Error deleting Articulo"], 500);
         }
-
         $this->jsonResponse(["error" => "Method Not Allowed"], 405);
     }
 }
